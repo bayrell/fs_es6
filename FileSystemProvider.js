@@ -17,7 +17,9 @@
  *  limitations under the License.
  */
 if (typeof BayrellFileSystem == 'undefined') BayrellFileSystem = {};
-BayrellFileSystem.FileSystemProvider = class extends BayrellRtl.ContextObject{
+BayrellFileSystem.FileSystemProvider = class extends Runtime.ContextObject{
+	getClassName(){return "BayrellFileSystem.FileSystemProvider";}
+	static getParentClassName(){return "Runtime.ContextObject";}
 	_init(){
 		super._init();
 		if (this.__implements__ == undefined){this.__implements__ = [];}
@@ -38,12 +40,12 @@ BayrellFileSystem.FileSystemProvider = class extends BayrellRtl.ContextObject{
 	 */
 	readDirectoryRecursive(basedir){
 		if (basedir == undefined) basedir="";
-		var res = new BayrellRtl.Types.Vector();
+		var res = new Runtime.Vector();
 		var arr = this.getDirectoryListing(basedir);
-		arr.each(function (path){
+		arr.each((path) => {
 			res.push(path);
 			if (this.isDir(path)){
-				res.pushVector(this.getDirectoryListing(path));
+				res.appendVector(this.getDirectoryListing(path));
 			}
 		});
 		return res;
@@ -55,11 +57,11 @@ BayrellFileSystem.FileSystemProvider = class extends BayrellRtl.ContextObject{
 	 */
 	getFilesRecursive(basedir){
 		if (basedir == undefined) basedir="";
-		var res = new BayrellRtl.Types.Vector();
+		var res = new Runtime.Vector();
 		var arr = this.getDirectoryListing(basedir);
-		arr.each(function (path){
+		arr.each((path) => {
 			if (this.isDir(path)){
-				res.pushVector(this.getFilesRecursive(path));
+				res.appendVector(this.getFilesRecursive(path));
 			}
 			else {
 				res.push(path);
@@ -68,12 +70,12 @@ BayrellFileSystem.FileSystemProvider = class extends BayrellRtl.ContextObject{
 		return res;
 	}
 	/**
-	 * Returns files content
+	 * Returns content of the file
 	 * @param string filepath
 	 * @param string charset
 	 * @return string
 	 */
-	loadFile(filepath, charset){
+	readFile(filepath, charset){
 		if (filepath == undefined) filepath="";
 		if (charset == undefined) charset="utf8";
 		return "";
@@ -133,3 +135,5 @@ BayrellFileSystem.FileSystemProvider = class extends BayrellRtl.ContextObject{
 		if (create_parent == undefined) create_parent=false;
 	}
 }
+BayrellFileSystem.FileSystemProvider.__static_implements__ = [];
+BayrellFileSystem.FileSystemProvider.__static_implements__.push(BayrellCommon.FileSystem.FileSystemInterface)

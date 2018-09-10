@@ -19,6 +19,7 @@
 if (typeof BayrellFileSystem == 'undefined') BayrellFileSystem = {};
 BayrellFileSystem.ModuleDescription = class{
 	getClassName(){return "BayrellFileSystem.ModuleDescription";}
+	static getParentClassName(){return "";}
 	_init(){
 		if (this.__implements__ == undefined){this.__implements__ = [];}
 		this.__implements__.push(Runtime.Interfaces.ModuleDescriptionInterface);
@@ -35,7 +36,7 @@ BayrellFileSystem.ModuleDescription = class{
 	 * @return string
 	 */
 	static getModuleVersion(){
-		return "0.1.0";
+		return "0.5.0";
 	}
 	/**
 	 * Init context
@@ -48,7 +49,7 @@ BayrellFileSystem.ModuleDescription = class{
 	 * @param ContextInterface context
 	 */
 	static onRegister(context){
-		context.registerProvider("default:fs", new BayrellFileSystem.FileSystemProviderFactory());
+		context.registerProviderFactory("default:fs", new BayrellFileSystem.FileSystemProviderFactory());
 	}
 	/**
 	 * Returns description interfaces of the current module
@@ -65,3 +66,5 @@ BayrellFileSystem.ModuleDescription = class{
 		return (new Runtime.Map()).set("Runtime", ">=0.2 <1.0");
 	}
 }
+BayrellFileSystem.ModuleDescription.__static_implements__ = [];
+BayrellFileSystem.ModuleDescription.__static_implements__.push(Runtime.Interfaces.ModuleDescriptionInterface)

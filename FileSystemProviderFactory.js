@@ -17,11 +17,13 @@
  *  limitations under the License.
  */
 if (typeof BayrellFileSystem == 'undefined') BayrellFileSystem = {};
-BayrellFileSystem.FileSystemProviderFactory = class extends BayrellRtl.ContextObject{
+BayrellFileSystem.FileSystemProviderFactory = class extends Runtime.ContextObject{
+	getClassName(){return "BayrellFileSystem.FileSystemProviderFactory";}
+	static getParentClassName(){return "Runtime.ContextObject";}
 	_init(){
 		super._init();
 		if (this.__implements__ == undefined){this.__implements__ = [];}
-		this.__implements__.push(BayrellRtl.Interfaces.FactoryInterface);
+		this.__implements__.push(Runtime.Interfaces.FactoryInterface);
 	}
 	/**
 	 * Returns new Instance
@@ -31,3 +33,5 @@ BayrellFileSystem.FileSystemProviderFactory = class extends BayrellRtl.ContextOb
 		return obj;
 	}
 }
+BayrellFileSystem.FileSystemProviderFactory.__static_implements__ = [];
+BayrellFileSystem.FileSystemProviderFactory.__static_implements__.push(Runtime.Interfaces.FactoryInterface)
