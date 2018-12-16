@@ -18,19 +18,20 @@
  */
 if (typeof BayrellFileSystem == 'undefined') BayrellFileSystem = {};
 BayrellFileSystem.FileSystemProviderFactory = class extends Runtime.ContextObject{
-	getClassName(){return "BayrellFileSystem.FileSystemProviderFactory";}
-	static getParentClassName(){return "Runtime.ContextObject";}
-	_init(){
-		super._init();
-		if (this.__implements__ == undefined){this.__implements__ = [];}
-		this.__implements__.push(Runtime.Interfaces.FactoryInterface);
-	}
 	/**
 	 * Returns new Instance
 	 */
 	newInstance(context){
 		var obj = new BayrellFileSystem.FileSystemProvider(context);
 		return obj;
+	}
+	/* ======================= Class Init Functions ======================= */
+	getClassName(){return "BayrellFileSystem.FileSystemProviderFactory";}
+	static getParentClassName(){return "Runtime.ContextObject";}
+	_init(){
+		super._init();
+		if (this.__implements__ == undefined){this.__implements__ = [];}
+		this.__implements__.push(Runtime.Interfaces.FactoryInterface);
 	}
 }
 BayrellFileSystem.FileSystemProviderFactory.__static_implements__ = [];

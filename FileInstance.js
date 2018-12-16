@@ -18,12 +18,6 @@
  */
 if (typeof BayrellFileSystem == 'undefined') BayrellFileSystem = {};
 BayrellFileSystem.FileInstance = class{
-	getClassName(){return "BayrellFileSystem.FileInstance";}
-	static getParentClassName(){return "";}
-	_init(){
-		if (this.__implements__ == undefined){this.__implements__ = [];}
-		this.__implements__.push(BayrellCommon.FileSystem.FileInterface);
-	}
 	/**
 	 * Returns stream
 	 */
@@ -38,6 +32,13 @@ BayrellFileSystem.FileInstance = class{
 	 * Close files
 	 */
 	close(){
+	}
+	/* ======================= Class Init Functions ======================= */
+	getClassName(){return "BayrellFileSystem.FileInstance";}
+	static getParentClassName(){return "";}
+	_init(){
+		if (this.__implements__ == undefined){this.__implements__ = [];}
+		this.__implements__.push(BayrellCommon.FileSystem.FileInterface);
 	}
 }
 BayrellFileSystem.FileInstance.__static_implements__ = [];

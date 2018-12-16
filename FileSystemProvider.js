@@ -18,13 +18,6 @@
  */
 if (typeof BayrellFileSystem == 'undefined') BayrellFileSystem = {};
 BayrellFileSystem.FileSystemProvider = class extends Runtime.ContextObject{
-	getClassName(){return "BayrellFileSystem.FileSystemProvider";}
-	static getParentClassName(){return "Runtime.ContextObject";}
-	_init(){
-		super._init();
-		if (this.__implements__ == undefined){this.__implements__ = [];}
-		this.__implements__.push(BayrellCommon.FileSystem.FileSystemInterface);
-	}
 	/**
 	 * Returns files and folders from directory
 	 * @param string basedir
@@ -133,6 +126,14 @@ BayrellFileSystem.FileSystemProvider = class extends Runtime.ContextObject{
 	makeDir(dirpath, create_parent){
 		if (dirpath == undefined) dirpath="";
 		if (create_parent == undefined) create_parent=false;
+	}
+	/* ======================= Class Init Functions ======================= */
+	getClassName(){return "BayrellFileSystem.FileSystemProvider";}
+	static getParentClassName(){return "Runtime.ContextObject";}
+	_init(){
+		super._init();
+		if (this.__implements__ == undefined){this.__implements__ = [];}
+		this.__implements__.push(BayrellCommon.FileSystem.FileSystemInterface);
 	}
 }
 BayrellFileSystem.FileSystemProvider.__static_implements__ = [];

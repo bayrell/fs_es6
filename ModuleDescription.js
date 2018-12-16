@@ -18,12 +18,6 @@
  */
 if (typeof BayrellFileSystem == 'undefined') BayrellFileSystem = {};
 BayrellFileSystem.ModuleDescription = class{
-	getClassName(){return "BayrellFileSystem.ModuleDescription";}
-	static getParentClassName(){return "";}
-	_init(){
-		if (this.__implements__ == undefined){this.__implements__ = [];}
-		this.__implements__.push(Runtime.Interfaces.ModuleDescriptionInterface);
-	}
 	/**
 	 * Returns module name
 	 * @return string
@@ -64,6 +58,13 @@ BayrellFileSystem.ModuleDescription = class{
 	 */
 	static getRequiredModules(context){
 		return (new Runtime.Map()).set("Runtime", ">=0.2 <1.0");
+	}
+	/* ======================= Class Init Functions ======================= */
+	getClassName(){return "BayrellFileSystem.ModuleDescription";}
+	static getParentClassName(){return "";}
+	_init(){
+		if (this.__implements__ == undefined){this.__implements__ = [];}
+		this.__implements__.push(Runtime.Interfaces.ModuleDescriptionInterface);
 	}
 }
 BayrellFileSystem.ModuleDescription.__static_implements__ = [];
