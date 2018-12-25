@@ -22,6 +22,7 @@ BayrellFileSystem.FileSystemProviderFactory = class extends Runtime.ContextObjec
 	 * Returns new Instance
 	 */
 	newInstance(context){
+		if (context == undefined) context=null;
 		var obj = new BayrellFileSystem.FileSystemProvider(context);
 		return obj;
 	}

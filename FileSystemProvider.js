@@ -36,6 +36,7 @@ BayrellFileSystem.FileSystemProvider = class extends Runtime.ContextObject{
 		var res = new Runtime.Vector();
 		var arr = this.getDirectoryListing(basedir);
 		arr.each((path) => {
+			var path = Runtime.rtl.toString(basedir)+"/"+Runtime.rtl.toString(path);
 			res.push(path);
 			if (this.isDir(path)){
 				res.appendVector(this.getDirectoryListing(path));
@@ -53,6 +54,7 @@ BayrellFileSystem.FileSystemProvider = class extends Runtime.ContextObject{
 		var res = new Runtime.Vector();
 		var arr = this.getDirectoryListing(basedir);
 		arr.each((path) => {
+			var path = Runtime.rtl.toString(basedir)+"/"+Runtime.rtl.toString(path);
 			if (this.isDir(path)){
 				res.appendVector(this.getFilesRecursive(path));
 			}
@@ -99,6 +101,14 @@ BayrellFileSystem.FileSystemProvider = class extends Runtime.ContextObject{
 	 * @param string dirpath
 	 * @param boolean create_parent. Default is true
 	 */
+	fileExists(filepath){
+		if (filepath == undefined) filepath="";
+	}
+	/**
+	 * Make dir
+	 * @param string dirpath
+	 * @param boolean create_parent. Default is true
+	 */
 	makeDir(dirpath, create_parent){
 		if (dirpath == undefined) dirpath="";
 		if (create_parent == undefined) create_parent=false;
@@ -117,15 +127,6 @@ BayrellFileSystem.FileSystemProvider = class extends Runtime.ContextObject{
 	 */
 	isFile(path){
 		return !this.isDir(path);
-	}
-	/**
-	 * Make dir
-	 * @param string dirpath
-	 * @param boolean create_parent. Default is true
-	 */
-	makeDir(dirpath, create_parent){
-		if (dirpath == undefined) dirpath="";
-		if (create_parent == undefined) create_parent=false;
 	}
 	/* ======================= Class Init Functions ======================= */
 	getClassName(){return "BayrellFileSystem.FileSystemProvider";}
