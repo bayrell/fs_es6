@@ -130,6 +130,7 @@ BayrellFileSystem.FileSystemProvider = class extends Runtime.ContextObject{
 	}
 	/* ======================= Class Init Functions ======================= */
 	getClassName(){return "BayrellFileSystem.FileSystemProvider";}
+	static getCurrentClassName(){return "BayrellFileSystem.FileSystemProvider";}
 	static getParentClassName(){return "Runtime.ContextObject";}
 	_init(){
 		super._init();

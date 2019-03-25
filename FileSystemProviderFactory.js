@@ -21,13 +21,15 @@ BayrellFileSystem.FileSystemProviderFactory = class extends Runtime.ContextObjec
 	/**
 	 * Returns new Instance
 	 */
-	newInstance(context){
+	newInstance(context, params){
 		if (context == undefined) context=null;
+		if (params == undefined) params=null;
 		var obj = new BayrellFileSystem.FileSystemProvider(context);
 		return obj;
 	}
 	/* ======================= Class Init Functions ======================= */
 	getClassName(){return "BayrellFileSystem.FileSystemProviderFactory";}
+	static getCurrentClassName(){return "BayrellFileSystem.FileSystemProviderFactory";}
 	static getParentClassName(){return "Runtime.ContextObject";}
 	_init(){
 		super._init();

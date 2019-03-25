@@ -35,6 +35,7 @@ BayrellFileSystem.FileInstance = class{
 	}
 	/* ======================= Class Init Functions ======================= */
 	getClassName(){return "BayrellFileSystem.FileInstance";}
+	static getCurrentClassName(){return "BayrellFileSystem.FileInstance";}
 	static getParentClassName(){return "";}
 	_init(){
 		if (this.__implements__ == undefined){this.__implements__ = [];}
