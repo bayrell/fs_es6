@@ -41,6 +41,17 @@ BayrellFileSystem.FileInstance = class{
 		if (this.__implements__ == undefined){this.__implements__ = [];}
 		this.__implements__.push(BayrellCommon.FileSystem.FileInterface);
 	}
+	static getFieldsList(names, flag){
+		if (flag==undefined)flag=0;
+	}
+	static getFieldInfoByName(field_name){
+		return null;
+	}
+	static getMethodsList(names){
+	}
+	static getMethodInfoByName(method_name){
+		return null;
+	}
 }
 BayrellFileSystem.FileInstance.__static_implements__ = [];
 BayrellFileSystem.FileInstance.__static_implements__.push(BayrellCommon.FileSystem.FileInterface)
